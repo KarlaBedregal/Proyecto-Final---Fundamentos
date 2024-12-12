@@ -81,7 +81,7 @@ public class MovimientosJuego extends JPanel implements KeyListener, ActionListe
             g.drawString("Número en el dado es " + dado, 600, 200); // MUESTRA EL VALOR DEL DADO
         }
         if (bandera == 0 && dado != 0 && dado != 6 && eliminacion == 0) {
-            jugadorActual = (jugadorActual + 1) % 4; // CAMBIA AL SIGUIENTE JUGADOR
+            jugadorActual = (jugadorActual + 1) % PantallaInicial.JUGADORES; // CAMBIA AL SIGUIENTE JUGADOR
         }
         eliminacion = 0; // REINICIA LA ELIMINACIÓN
     }
@@ -140,7 +140,7 @@ public class MovimientosJuego extends JPanel implements KeyListener, ActionListe
                     int k = 0;
                     int pos = jugador.jugadores[jugadorActual].fichasActivas[valor].posicionActual;
                     if ((pos % 13) != 0 && (pos % 13) != 8 && pos < 51) { // VERIFICA SI LA FICHA CAE EN UNA POSICIÓN ESPECIAL
-                        for (int i = 0; i < 4; i++) {
+                        for (int i = 0; i < PantallaInicial.JUGADORES; i++) {
                             if (i != jugadorActual) {
                                 for (int j = 0; j < 4; j++) {
                                     int temp1 = Camino.posicionX[jugadorActual][jugador.jugadores[jugadorActual].fichasActivas[valor].posicionActual];
@@ -185,7 +185,7 @@ public class MovimientosJuego extends JPanel implements KeyListener, ActionListe
                     int k = 0;
                     int pos = jugador.jugadores[jugadorActual].fichasActivas[valor].posicionActual;
                     if ((pos % 13) != 0 && (pos % 13) != 8 && pos < 51) { // VERIFICA SI LA FICHA CAE EN UNA POSICIÓN ESPECIAL
-                        for (int i = 0; i < 4; i++) {
+                        for (int i = 0; i < PantallaInicial.JUGADORES; i++) {
                             if (i != jugadorActual) {
                                 for (int j = 0; j < 4; j++) {
                                     int temp1 = Camino.posicionX[jugadorActual][jugador.jugadores[jugadorActual].fichasActivas[valor].posicionActual];

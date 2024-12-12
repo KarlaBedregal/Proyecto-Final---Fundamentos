@@ -9,6 +9,7 @@ public class PantallaInicial extends JFrame
 	private static final int ANCHO = 300;
 	private static final int LARGO = 350;
 	public static String [] jugador = new String [4];
+	public static int JUGADORES;
 	private JRadioButton [] cantidad;
 	private JTextField [] jugadores;
 	
@@ -69,6 +70,7 @@ public class PantallaInicial extends JFrame
                 jugadores[1].setEnabled(true);
             	jugadores[2].setEnabled(false);
                 jugadores[3].setEnabled(false);
+                JUGADORES = 2;
             }
         });
 		
@@ -77,6 +79,7 @@ public class PantallaInicial extends JFrame
             	jugadores[1].setEnabled(true);
             	jugadores[2].setEnabled(true);
                 jugadores[3].setEnabled(false);
+                JUGADORES = 3;
             }
         });
 		
@@ -85,6 +88,7 @@ public class PantallaInicial extends JFrame
             	jugadores[1].setEnabled(true);
             	jugadores[2].setEnabled(true);
                 jugadores[3].setEnabled(true);
+                JUGADORES = 4;
             }
         });
 	}
