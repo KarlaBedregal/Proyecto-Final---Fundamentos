@@ -6,24 +6,24 @@ import java.awt.Graphics2D;
 
 public class Ficha {
     int posicionX, posicionY; // COORDENADAS DE LA FICHA
-    int posicionActual; // POSICI√ìN ACTUAL EN EL TABLERO
+    int posicionActual; // POSICI”N ACTUAL EN EL TABLERO
     int altura, ancho; // DIMENSIONES DE LA FICHA
 
     // CONSTRUCTOR DE LA CLASE FICHA
     public Ficha(int altura, int ancho) {
-        posicionActual = -1; // INICIALIZA POSICI√ìN ACTUAL A -1 (FUERA DEL TABLERO)
-        posicionX = -1; // INICIALIZA POSICI√ìN X A -1
-        posicionY = -1; // INICIALIZA POSICI√ìN Y A -1
+        posicionActual = -1; // INICIALIZA POSICI”N ACTUAL A -1 (FUERA DEL TABLERO)
+        posicionX = -1; // INICIALIZA POSICI”N X A -1
+        posicionY = -1; // INICIALIZA POSICI”N Y A -1
         this.altura = altura; // ASIGNA ALTURA
         this.ancho = ancho; // ASIGNA ANCHO
     }
 
-    // M√âTODO PARA DIBUJAR LA FICHA
+    // M…TODO PARA DIBUJAR LA FICHA
     public void dibujar(Graphics2D graficos, int i, int j, int jugador) {
-        if (posicionActual == -1) { // SI LA FICHA EST√Å FUERA DEL TABLERO
+        if (posicionActual == -1) { // SI LA FICHA EST¡ FUERA DEL TABLERO
             int temp1 = 80 + (altura / 2), temp2 = 50 + (ancho / 2); // CALCULA LAS COORDENADAS TEMPORALES
-            posicionX = i; // ASIGNA LA POSICI√ìN X
-            posicionY = j; // ASIGNA LA POSICI√ìN Y
+            posicionX = i; // ASIGNA LA POSICI”N X
+            posicionY = j; // ASIGNA LA POSICI”N Y
             if (jugador == 0) {
                 graficos.setColor(Color.RED); // ASIGNA COLOR ROJO SI ES EL JUGADOR 0
             } else if (jugador == 1) {
@@ -37,10 +37,10 @@ public class Ficha {
             graficos.setStroke(new BasicStroke(2)); // ESTABLECE EL GROSOR DEL BORDE
             graficos.setColor(Color.BLACK); // ASIGNA EL COLOR NEGRO PARA EL BORDE
             graficos.drawOval(temp1 + 5 + (i * ancho), temp2 + 5 + (j * altura), ancho - 10, altura - 10); // DIBUJA EL BORDE DE LA FICHA
-        } else { // SI LA FICHA EST√Å EN EL TABLERO
+        } else { // SI LA FICHA EST¡ EN EL TABLERO
             int temp1 = 80, temp2 = 50; // COORDENADAS TEMPORALES
-            posicionX = Camino.posicionX[jugador][posicionActual]; // ACTUALIZA LA POSICI√ìN X BASADO EN EL CAMINO DEL JUGADOR
-            posicionY = Camino.posicionY[jugador][posicionActual]; // ACTUALIZA LA POSICI√ìN Y BASADO EN EL CAMINO DEL JUGADOR
+            posicionX = Camino.posicionX[jugador][posicionActual]; // ACTUALIZA LA POSICI”N X BASADO EN EL CAMINO DEL JUGADOR
+            posicionY = Camino.posicionY[jugador][posicionActual]; // ACTUALIZA LA POSICI”N Y BASADO EN EL CAMINO DEL JUGADOR
             if (jugador == 0) {
                 graficos.setColor(Color.RED); // ASIGNA COLOR ROJO SI ES EL JUGADOR 0
             } else if (jugador == 1) {

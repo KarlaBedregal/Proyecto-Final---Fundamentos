@@ -8,7 +8,7 @@ public class PantallaInicial extends JFrame
 {
 	private static final int ANCHO = 300;
 	private static final int LARGO = 350;
-	private String [] jugador = new String [4];
+	public static String [] jugador = new String [4];
 	private JRadioButton [] cantidad;
 	private JTextField [] jugadores;
 	
@@ -18,10 +18,12 @@ public class PantallaInicial extends JFrame
 		setSize(ANCHO, LARGO);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setLayout( new GridLayout(2, 0, 0, 25) );
+		setAlwaysOnTop(true);
+		setLayout( new GridLayout(2, 0, 0, 15) );
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		crearContenido();
 		setVisible(true);
+		setEnabled(true);
 	}
 	
 	public void crearContenido ()
@@ -52,10 +54,39 @@ public class PantallaInicial extends JFrame
 			cantidadPanel.add(jugadores);
 		}
 		
+		agregarListener();
+		
 		JPanel cantidadPanel2 = new JPanel ( new FlowLayout(FlowLayout.LEFT, 30, 10) );
 		cantidadPanel2.add(cantidadPanelTitulo);
 		cantidadPanel2.add(cantidadPanel);
 		add(cantidadPanel2);
+	}
+	
+	public void agregarListener ()
+	{
+		cantidad[0].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                jugadores[1].setEnabled(true);
+            	jugadores[2].setEnabled(false);
+                jugadores[3].setEnabled(false);
+            }
+        });
+		
+		cantidad[1].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	jugadores[1].setEnabled(true);
+            	jugadores[2].setEnabled(true);
+                jugadores[3].setEnabled(false);
+            }
+        });
+		
+		cantidad[2].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	jugadores[1].setEnabled(true);
+            	jugadores[2].setEnabled(true);
+                jugadores[3].setEnabled(true);
+            }
+        });
 	}
 	
 	public void ingresoDatos ()
@@ -73,6 +104,11 @@ public class PantallaInicial extends JFrame
 			panelIngresar.add(jugadores[i]);
 		}
 		
+		// BOTON DE ENVIAR
+		JButton botonEnviar = new JButton ("Configurar");
+		botonEnviar.addActionListener(new Listener());
+		panelIngresar.add(botonEnviar);
+		
 		add(panelIngresar);
 	}
 	
@@ -80,13 +116,18 @@ public class PantallaInicial extends JFrame
 	{
 		public void actionPerformed (ActionEvent e)
 		{	
-			
+		    // MËTODO PARA ESTABLECER NOMBRES
+	    	for (int i = 0 ; i < jugadores.length ; i++)
+	    		jugador[i] = jugadores[i].getText();
+	    	
+	    	dispose();
+	    	
+	    	new PantallaJuego ();
 		}
 	}
 	
-	public static void main (String[] args)
-	{
-		new PantallaInicial();
+	public static void main(String[] args) {
+        new PantallaInicial();
 	}
 }
 

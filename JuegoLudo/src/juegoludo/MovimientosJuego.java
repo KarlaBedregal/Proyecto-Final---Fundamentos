@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 
 public class MovimientosJuego extends JPanel implements KeyListener, ActionListener, MouseListener {
 
-    private static final long serialVersionUID = 1L; // IDENTIFICADOR DE VERSI√ìN PARA LA SERIALIZACI√ìN
+    private static final long serialVersionUID = 1L; // IDENTIFICADOR DE VERSI”N PARA LA SERIALIZACI”N
     Tablero tablero; // OBJETO QUE REPRESENTA EL TABLERO DEL JUEGO
     CrearJugadores jugador; // OBJETO QUE REPRESENTA LOS JUGADORES DEL JUEGO
     Timer temporizador; // OBJETO TIMER PARA EL CONTROL DEL TIEMPO
@@ -26,7 +26,7 @@ public class MovimientosJuego extends JPanel implements KeyListener, ActionListe
 
     // CONSTRUCTOR DE LA CLASE MOVIMIENTOSJUEGO
     public MovimientosJuego() {
-        setFocusTraversalKeysEnabled(false); // DESHABILITA LAS TECLAS DE TRAVES√çA DE FOCUS
+        setFocusTraversalKeysEnabled(false); // DESHABILITA LAS TECLAS DE TRAVESÕA DE FOCUS
         requestFocus(); // SOLICITA FOCUS PARA EL PANEL
         jugadorActual = 0; // INICIALIZA EL JUGADOR ACTUAL A 0
         tablero = new Tablero(80, 50); // CREA UN NUEVO TABLERO CON LAS DIMENSIONES DADAS
@@ -34,17 +34,17 @@ public class MovimientosJuego extends JPanel implements KeyListener, ActionListe
         dado = 0; // INICIALIZA EL VALOR DEL DADO A 0
         bandera = 0; // INICIALIZA LA BANDERA A 0
         tiro = 0; // INICIALIZA EL TIRO A 0
-        eliminacion = 0; // INICIALIZA LA ELIMINACI√ìN A 0
+        eliminacion = 0; // INICIALIZA LA ELIMINACI”N A 0
     }
 
-    // M√âTODO PARA DIBUJAR LOS COMPONENTES DEL JUEGO
+    // M…TODO PARA DIBUJAR LOS COMPONENTES DEL JUEGO
     @Override
     public void paint(Graphics g) {
         tablero.dibujar((Graphics2D) g); // DIBUJA EL TABLERO
         jugador.dibujar((Graphics2D) g); // DIBUJA LOS JUGADORES
         if (jugador.jugadores[jugadorActual].fichas == 4) { // VERIFICA SI EL JUGADOR ACTUAL HA GANADO
             g.setColor(Color.WHITE);
-            g.fillRect(590, 100, 380, 130); // DIBUJA UN RECT√ÅNGULO BLANCO PARA EL MENSAJE DE GANADOR
+            g.fillRect(590, 100, 380, 130); // DIBUJA UN RECT¡NGULO BLANCO PARA EL MENSAJE DE GANADOR
             if (jugadorActual == 0) {
                 g.setColor(Color.RED);
             } else if (jugadorActual == 1) {
@@ -55,7 +55,7 @@ public class MovimientosJuego extends JPanel implements KeyListener, ActionListe
                 g.setColor(Color.BLUE);
             }
             g.setFont(new Font("serif", Font.BOLD, 40));
-            g.drawString("Jugador " + (jugadorActual + 1) + " gana.", 600, 150); // MENSAJE DE GANADOR
+            g.drawString("Jugador " + (PantallaInicial.jugador[jugadorActual]) + " gana.", 600, 150); // MENSAJE DE GANADOR
             g.drawString("Felicidades.", 600, 200); // MENSAJE DE FELICITACIONES
             jugadorActual = 0; // REINICIA EL JUGADOR ACTUAL A 0
             tablero = new Tablero(80, 50); // CREA UN NUEVO TABLERO
@@ -63,10 +63,10 @@ public class MovimientosJuego extends JPanel implements KeyListener, ActionListe
             dado = 0; // REINICIA EL VALOR DEL DADO
             bandera = 0; // REINICIA LA BANDERA
             tiro = 0; // REINICIA EL TIRO
-            eliminacion = 0; // REINICIA LA ELIMINACI√ìN
+            eliminacion = 0; // REINICIA LA ELIMINACI”N
         } else if (dado != 0) { // SI SE HA LANZADO EL DADO
             g.setColor(Color.WHITE);
-            g.fillRect(590, 100, 420, 130); // DIBUJA UN RECT√ÅNGULO BLANCO PARA MOSTRAR EL VALOR DEL DADO
+            g.fillRect(590, 100, 420, 130); // DIBUJA UN RECT¡NGULO BLANCO PARA MOSTRAR EL VALOR DEL DADO
             if (jugadorActual == 0) {
                 g.setColor(Color.RED);
             } else if (jugadorActual == 1) {
@@ -77,31 +77,31 @@ public class MovimientosJuego extends JPanel implements KeyListener, ActionListe
                 g.setColor(Color.BLUE);
             }
             g.setFont(new Font("serif", Font.BOLD, 40));
-            g.drawString("Jugador " + (jugadorActual + 1), 600, 150); // MUESTRA EL JUGADOR ACTUAL
-            g.drawString("N√∫mero en el dado es " + dado, 600, 200); // MUESTRA EL VALOR DEL DADO
+            g.drawString("Jugador " + (PantallaInicial.jugador[jugadorActual]), 600, 150); // MUESTRA EL JUGADOR ACTUAL
+            g.drawString("N˙mero en el dado es " + dado, 600, 200); // MUESTRA EL VALOR DEL DADO
         }
         if (bandera == 0 && dado != 0 && dado != 6 && eliminacion == 0) {
             jugadorActual = (jugadorActual + 1) % 4; // CAMBIA AL SIGUIENTE JUGADOR
         }
-        eliminacion = 0; // REINICIA LA ELIMINACI√ìN
+        eliminacion = 0; // REINICIA LA ELIMINACI”N
     }
 
-    // M√âTODO PARA MANEJAR EVENTOS DE TECLADO
+    // M…TODO PARA MANEJAR EVENTOS DE TECLADO
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ENTER && bandera == 0) { // SI SE PRESIONA ENTER Y LA BANDERA EST√Å EN 0
+        if (e.getKeyCode() == KeyEvent.VK_ENTER && bandera == 0) { // SI SE PRESIONA ENTER Y LA BANDERA EST¡ EN 0
             tiro = 0; // REINICIA EL TIRO
-            dado = 1 + (int) (Math.random() * 6); // GENERA UN N√öMERO ALEATORIO ENTRE 1 Y 6
+            dado = 1 + (int) (Math.random() * 6); // GENERA UN N⁄MERO ALEATORIO ENTRE 1 Y 6
             repaint(); // REPINTA EL COMPONENTE
             for (int i = 0; i < 4; i++) {
                 if (jugador.jugadores[jugadorActual].fichasActivas[i].posicionActual != -1
                         && jugador.jugadores[jugadorActual].fichasActivas[i].posicionActual != 56
                         && (jugador.jugadores[jugadorActual].fichasActivas[i].posicionActual + dado) <= 56) {
-                    bandera = 1; // ACTUALIZA LA BANDERA SI HAY UN MOVIMIENTO V√ÅLIDO
+                    bandera = 1; // ACTUALIZA LA BANDERA SI HAY UN MOVIMIENTO V¡LIDO
                     break;
                 }
             }
-            if (bandera == 0 && dado == 6) { // SI NO HAY MOVIMIENTO V√ÅLIDO PERO EL DADO ES 6
+            if (bandera == 0 && dado == 6) { // SI NO HAY MOVIMIENTO V¡LIDO PERO EL DADO ES 6
                 for (int i = 0; i < 4; i++) {
                     if (jugador.jugadores[jugadorActual].fichasActivas[i].posicionActual == -1) {
                         bandera = 1; // ACTUALIZA LA BANDERA SI HAY UNA FICHA FUERA DEL TABLERO
@@ -111,15 +111,15 @@ public class MovimientosJuego extends JPanel implements KeyListener, ActionListe
             }
         }
     }
-    // M√âTODO QUE MANEJA LOS EVENTOS DE CLIC DEL RAT√ìN
+    // M…TODO QUE MANEJA LOS EVENTOS DE CLIC DEL RAT”N
     public void mouseClicked(MouseEvent e) {    
-        if (bandera == 1) { // VERIFICA SI SE PUEDE REALIZAR UNA ACCI√ìN
+        if (bandera == 1) { // VERIFICA SI SE PUEDE REALIZAR UNA ACCI”N
             int x = e.getX(); // OBTIENE LA COORDENADA X DEL CLIC
             int y = e.getY(); // OBTIENE LA COORDENADA Y DEL CLIC
             x = x - 80; // AJUSTA LA COORDENADA X
             y = y - 50; // AJUSTA LA COORDENADA Y
-            x = x / 30; // ESCALA LA COORDENADA X A LA DIMENSI√ìN DE LAS CASILLAS
-            y = y / 30; // ESCALA LA COORDENADA Y A LA DIMENSI√ìN DE LAS CASILLAS
+            x = x / 30; // ESCALA LA COORDENADA X A LA DIMENSI”N DE LAS CASILLAS
+            y = y / 30; // ESCALA LA COORDENADA Y A LA DIMENSI”N DE LAS CASILLAS
             int valor = -1; // VARIABLE PARA GUARDAR LA FICHA SELECCIONADA
 
             if (dado == 6) { // SI EL DADO ES 6
@@ -132,14 +132,14 @@ public class MovimientosJuego extends JPanel implements KeyListener, ActionListe
                         break;
                     }
                 }
-                if (valor != -1) { // SI SE SELECCION√ì UNA FICHA
+                if (valor != -1) { // SI SE SELECCION” UNA FICHA
                     jugador.jugadores[jugadorActual].fichasActivas[valor].posicionActual += dado; // MUEVE LA FICHA
                     if (jugador.jugadores[jugadorActual].fichasActivas[valor].posicionActual == 56) {
                         jugador.jugadores[jugadorActual].fichas++; // INCREMENTA LAS FICHAS DEL JUGADOR
                     }
                     int k = 0;
                     int pos = jugador.jugadores[jugadorActual].fichasActivas[valor].posicionActual;
-                    if ((pos % 13) != 0 && (pos % 13) != 8 && pos < 51) { // VERIFICA SI LA FICHA CAE EN UNA POSICI√ìN ESPECIAL
+                    if ((pos % 13) != 0 && (pos % 13) != 8 && pos < 51) { // VERIFICA SI LA FICHA CAE EN UNA POSICI”N ESPECIAL
                         for (int i = 0; i < 4; i++) {
                             if (i != jugadorActual) {
                                 for (int j = 0; j < 4; j++) {
@@ -148,7 +148,7 @@ public class MovimientosJuego extends JPanel implements KeyListener, ActionListe
                                     if (jugador.jugadores[i].fichasActivas[j].posicionX == temp1 
                                             && jugador.jugadores[i].fichasActivas[j].posicionY == temp2) {
                                         jugador.jugadores[i].fichasActivas[j].posicionActual = -1; // ELIMINA LA FICHA DEL CONTRINCANTE
-                                        eliminacion = 1; // MARCA QUE SE REALIZ√ì UNA ELIMINACI√ìN
+                                        eliminacion = 1; // MARCA QUE SE REALIZ” UNA ELIMINACI”N
                                         k = 1;
                                         break;
                                     }
@@ -158,7 +158,7 @@ public class MovimientosJuego extends JPanel implements KeyListener, ActionListe
                                 break;
                         }
                     }
-                } else { // SI NO SE SELECCION√ì UNA FICHA
+                } else { // SI NO SE SELECCION” UNA FICHA
                     for (int i = 0; i < 4; i++) {
                         if (jugador.jugadores[jugadorActual].fichasActivas[i].posicionActual == -1) {
                             jugador.jugadores[jugadorActual].fichasActivas[i].posicionActual = 0; // MUEVE LA FICHA DESDE LA BASE
@@ -177,14 +177,14 @@ public class MovimientosJuego extends JPanel implements KeyListener, ActionListe
                         break;
                     }
                 }
-                if (valor != -1) { // SI SE SELECCION√ì UNA FICHA
+                if (valor != -1) { // SI SE SELECCION” UNA FICHA
                     jugador.jugadores[jugadorActual].fichasActivas[valor].posicionActual += dado; // MUEVE LA FICHA
                     if (jugador.jugadores[jugadorActual].fichasActivas[valor].posicionActual == 56) {
                         jugador.jugadores[jugadorActual].fichas++; // INCREMENTA LAS FICHAS DEL JUGADOR
                     }
                     int k = 0;
                     int pos = jugador.jugadores[jugadorActual].fichasActivas[valor].posicionActual;
-                    if ((pos % 13) != 0 && (pos % 13) != 8 && pos < 51) { // VERIFICA SI LA FICHA CAE EN UNA POSICI√ìN ESPECIAL
+                    if ((pos % 13) != 0 && (pos % 13) != 8 && pos < 51) { // VERIFICA SI LA FICHA CAE EN UNA POSICI”N ESPECIAL
                         for (int i = 0; i < 4; i++) {
                             if (i != jugadorActual) {
                                 for (int j = 0; j < 4; j++) {
@@ -193,7 +193,7 @@ public class MovimientosJuego extends JPanel implements KeyListener, ActionListe
                                     if (jugador.jugadores[i].fichasActivas[j].posicionX == temp1 
                                             && jugador.jugadores[i].fichasActivas[j].posicionY == temp2) {
                                         jugador.jugadores[i].fichasActivas[j].posicionActual = -1; // ELIMINA LA FICHA DEL CONTRINCANTE
-                                        eliminacion = 1; // MARCA QUE SE REALIZ√ì UNA ELIMINACI√ìN
+                                        eliminacion = 1; // MARCA QUE SE REALIZ” UNA ELIMINACI”N
                                         k = 1;
                                         break;
                                     }
@@ -208,43 +208,43 @@ public class MovimientosJuego extends JPanel implements KeyListener, ActionListe
             repaint(); // REPINTA EL COMPONENTE
         }
     }
-    // M√âTODO QUE SE EJECUTA CUANDO SE ACTIVA UNA ACCI√ìN (NO IMPLEMENTADO)
+    // M…TODO QUE SE EJECUTA CUANDO SE ACTIVA UNA ACCI”N (NO IMPLEMENTADO)
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
     }
 
-    // M√âTODO QUE SE EJECUTA CUANDO SE SUELTA UNA TECLA (NO IMPLEMENTADO)
+    // M…TODO QUE SE EJECUTA CUANDO SE SUELTA UNA TECLA (NO IMPLEMENTADO)
     @Override
     public void keyReleased(KeyEvent arg0) {
         // TODO Auto-generated method stub
     }
 
-    // M√âTODO QUE SE EJECUTA CUANDO SE PRESIONA UNA TECLA (NO IMPLEMENTADO)
+    // M…TODO QUE SE EJECUTA CUANDO SE PRESIONA UNA TECLA (NO IMPLEMENTADO)
     @Override
     public void keyTyped(KeyEvent arg0) {
         // TODO Auto-generated method stub
     }
 
-    // M√âTODO QUE SE EJECUTA CUANDO EL RAT√ìN ENTRA EN EL COMPONENTE (NO IMPLEMENTADO)
+    // M…TODO QUE SE EJECUTA CUANDO EL RAT”N ENTRA EN EL COMPONENTE (NO IMPLEMENTADO)
     @Override
     public void mouseEntered(MouseEvent arg0) {
         // TODO Auto-generated method stub
     }
 
-    // M√âTODO QUE SE EJECUTA CUANDO EL RAT√ìN SALE DEL COMPONENTE (NO IMPLEMENTADO)
+    // M…TODO QUE SE EJECUTA CUANDO EL RAT”N SALE DEL COMPONENTE (NO IMPLEMENTADO)
     @Override
     public void mouseExited(MouseEvent arg0) {
         // TODO Auto-generated method stub
     }
 
-    // M√âTODO QUE SE EJECUTA CUANDO SE PRESIONA UN BOT√ìN DEL RAT√ìN (NO IMPLEMENTADO)
+    // M…TODO QUE SE EJECUTA CUANDO SE PRESIONA UN BOT”N DEL RAT”N (NO IMPLEMENTADO)
     @Override
     public void mousePressed(MouseEvent e) {
         // TODO Auto-generated method stub
     }
 
-    // M√âTODO QUE SE EJECUTA CUANDO SE SUELTA UN BOT√ìN DEL RAT√ìN (NO IMPLEMENTADO)
+    // M…TODO QUE SE EJECUTA CUANDO SE SUELTA UN BOT”N DEL RAT”N (NO IMPLEMENTADO)
     @Override
     public void mouseReleased(MouseEvent arg0) {
         // TODO Auto-generated method stub

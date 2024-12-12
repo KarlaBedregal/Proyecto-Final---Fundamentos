@@ -14,8 +14,8 @@ public class Jugador {
         }
     }
 
-    // MÃ‰TODO PARA DIBUJAR EL JUGADOR 
+    // MÉTODO PARA DIBUJAR EL JUGADOR 
     public void dibujar(Graphics2D graficos) {
-        // CÃ³digo auxiliar de mÃ©todo generado automÃ¡ticamente
+        // Código auxiliar de método generado automáticamente
     }
 }
