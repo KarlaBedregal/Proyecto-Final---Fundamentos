@@ -8,29 +8,29 @@ public class PantallaJuego {
         // CREA EL OBJETO JFRAME QUE REPRESENTA LA VENTANA DEL JUEGO
     	JFrame ventanaJuego = new JFrame();
         
-        // ESTABLECE LAS DIMENSIONES Y LA UBICACIÓN DE LA VENTANA DEL JUEGO
+        // ESTABLECE LAS DIMENSIONES Y LA UBICACIï¿½N DE LA VENTANA DEL JUEGO
         ventanaJuego.setBounds(10, 10, 1220, 600);
         
-        // ESTABLECE EL TÍTULO DE LA VENTANA DEL JUEGO
+        // ESTABLECE EL Tï¿½TULO DE LA VENTANA DEL JUEGO
         ventanaJuego.setTitle("LUDO");
         
         // IMPIDE QUE LA VENTANA DEL JUEGO SE PUEDA REDIMENSIONAR
         ventanaJuego.setResizable(false);
         
-        // ESTABLECE LA OPERACIÓN POR DEFECTO AL CERRAR LA VENTANA
+        // ESTABLECE LA OPERACIï¿½N POR DEFECTO AL CERRAR LA VENTANA
         ventanaJuego.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        // CREA UN OBJETO DE LA CLASE MOVIMIENTOSJUEGO QUE CONTIENE LA LÓGICA DEL JUEGO
+        // CREA UN OBJETO DE LA CLASE MOVIMIENTOSJUEGO QUE CONTIENE LA Lï¿½GICA DEL JUEGO
         MovimientosJuego movimientosJuego = new MovimientosJuego();
         
         // ESTABLECE EL OBJETO MOVIMIENTOSJUEGO COMO FOCUSABLE
         movimientosJuego.setFocusable(true);
         
-        // AÑADE EL OBJETO MOVIMIENTOSJUEGO COMO ESCUCHADOR DE EVENTOS DEL TECLADO Y RATÓN
+        // Aï¿½ADE EL OBJETO MOVIMIENTOSJUEGO COMO ESCUCHADOR DE EVENTOS DEL TECLADO Y RATï¿½N
         movimientosJuego.addKeyListener(movimientosJuego);
         movimientosJuego.addMouseListener(movimientosJuego);
         
-        // AÑADE EL OBJETO MOVIMIENTOSJUEGO A LA VENTANA DEL JUEGO
+        // Aï¿½ADE EL OBJETO MOVIMIENTOSJUEGO A LA VENTANA DEL JUEGO
         ventanaJuego.add(movimientosJuego);
         
         // HACE VISIBLE LA VENTANA DEL JUEGO

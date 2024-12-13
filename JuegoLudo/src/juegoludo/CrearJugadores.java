@@ -31,11 +31,11 @@ public class CrearJugadores {
         }
     }
 
-    // MÉTODO PARA DIBUJAR LOS JUGADORES EN EL TABLERO
+    // Mï¿½TODO PARA DIBUJAR LOS JUGADORES EN EL TABLERO
     public void dibujar(Graphics2D g) {
         for (int i = 0; i < PantallaInicial.JUGADORES; i++) {
             for (int j = 0; j < 4; j++) {
-                // DIBUJA CADA FICHA DEL JUGADOR EN SU POSICIÓN INICIAL
+                // DIBUJA CADA FICHA DEL JUGADOR EN SU POSICIï¿½N INICIAL
                 jugadores[i].fichasActivas[j].dibujar(g, posicionInicialX[i][j], posicionInicialY[i][j], i);
             }
         }

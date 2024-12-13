@@ -10,13 +10,13 @@ public class Tablero {
 
     // CONSTRUCTOR DE LA CLASE TABLERO
     public Tablero(int posX, int posY) {
-        x = posX; // ASIGNA LA POSICIÓN X
-        y = posY; // ASIGNA LA POSICIÓN Y
+        x = posX; // ASIGNA LA POSICIï¿½N X
+        y = posY; // ASIGNA LA POSICIï¿½N Y
         ancho = 30; // ASIGNA EL ANCHO DE CADA CASILLA
         alto = 30; // ASIGNA LA ALTURA DE CADA CASILLA
     }
     
-    // MÉTODO PARA DIBUJAR EL TABLERO
+    // Mï¿½TODO PARA DIBUJAR EL TABLERO
     public void dibujar(Graphics2D graficos) {
         graficos.setColor(Color.WHITE);
         graficos.fillRect(x, y, 15 * ancho, 15 * alto); // DIBUJA EL FONDO DEL TABLERO
@@ -82,7 +82,7 @@ public class Tablero {
             }
         }
 
-        // DIBUJA LOS TRIÁNGULOS CENTRALES PARA CADA JUGADOR
+        // DIBUJA LOS TRIï¿½NGULOS CENTRALES PARA CADA JUGADOR
         graficos.setColor(Color.RED);
         int puntosX0[] = { x + (6 * ancho), x + (6 * ancho), x + 15 + (7 * ancho) };
         int puntosY0[] = { y + (6 * alto), y + (9 * alto), y + 15 + (7 * ancho) };
@@ -107,7 +107,7 @@ public class Tablero {
         int numPuntos3 = 3;
         graficos.fillPolygon(puntosX3, puntosY3, numPuntos3);
 
-        // DIBUJA LOS BORDES Y LAS LÍNEAS DEL TABLERO
+        // DIBUJA LOS BORDES Y LAS Lï¿½NEAS DEL TABLERO
         graficos.setStroke(new BasicStroke(2));
         graficos.setColor(Color.BLACK);
 
@@ -121,14 +121,14 @@ public class Tablero {
                     }
                 }
         
-                // DIBUJA LOS RECTÁNGULOS GRANDES EN LAS ESQUINAS (INICIO DE CADA JUGADOR)
+                // DIBUJA LOS RECTï¿½NGULOS GRANDES EN LAS ESQUINAS (INICIO DE CADA JUGADOR)
                 graficos.drawRect(x + (1 * ancho), y + (1 * alto), 4 * ancho, 4 * alto);
                 graficos.drawRect(x + (10 * ancho), y + (1 * alto), 4 * ancho, 4 * alto);
                 graficos.drawRect(x + (1 * ancho), y + (10 * alto), 4 * ancho, 4 * alto);
                 graficos.drawRect(x + (10 * ancho), y + (10 * alto), 4 * ancho, 4 * alto);
                 graficos.drawRect(x, y, 15 * ancho, 15 * alto); // DIBUJA EL BORDE EXTERIOR DEL TABLERO
         
-                // DIBUJA LOS RECTÁNGULOS PEQUEÑOS DE COLORES PARA CADA JUGADOR
+                // DIBUJA LOS RECTï¿½NGULOS PEQUEï¿½OS DE COLORES PARA CADA JUGADOR
                 for (int i = 0; i < 2; i++) {
                     for (int j = 0; j < 2; j++) {
                         graficos.drawRect(temp1 + (2 * i * ancho), temp2 + (2 * j * alto), ancho, alto);
@@ -138,27 +138,28 @@ public class Tablero {
                     }
                 }
         
-                // DIBUJA LOS TRIÁNGULOS CENTRALES DE COLORES PARA CADA JUGADOR
+                // DIBUJA LOS TRIï¿½NGULOS CENTRALES DE COLORES PARA CADA JUGADOR
                 graficos.drawPolygon(puntosX0, puntosY0, numPuntos0);
                 graficos.drawPolygon(puntosX1, puntosY1, numPuntos1);
                 graficos.drawPolygon(puntosX2, puntosY2, numPuntos2);
                 graficos.drawPolygon(puntosX3, puntosY3, numPuntos3);
         
-                // DIBUJA LAS OVÁLICAS DE LOS COLORES PARA CADA JUGADOR
+                // DIBUJA LAS OVï¿½LICAS DE LOS COLORES PARA CADA JUGADOR
                 graficos.drawOval(x + 5 + (6 * ancho), y + 5 + (2 * alto), ancho - 10, alto - 10);
                 graficos.drawOval(x + 5 + (12 * ancho), y + 5 + (6 * alto), ancho - 10, alto - 10);
                 graficos.drawOval(x + 5 + (8 * ancho), y + 5 + (12 * alto), ancho - 10, alto - 10);
                 graficos.drawOval(x + 5 + (2 * ancho), y + 5 + (8 * alto), ancho - 10, alto - 10);
                 
                 // CONFIGURA LA FUENTE Y DIBUJA LOS TEXTOS DE INSTRUCCIONES
-                graficos.setFont(new Font("serif", Font.BOLD, 40));
+                graficos.setFont(new Font("serif", Font.BOLD, 30));
                 graficos.drawString(PantallaInicial.jugador[0]+"", 90, 35);
                 graficos.drawString(PantallaInicial.jugador[1]+"", 370, 35);
                 graficos.drawString(PantallaInicial.jugador[3]+"", 90, 540);
                 graficos.drawString(PantallaInicial.jugador[2]+"", 370, 540);
                 graficos.drawString("Instrucciones:", 550, 300);
-                graficos.drawString("1. Presiona Enter para lanzar el dado.", 550, 350);
-                graficos.drawString("2. Haz clic en la ficha para moverla.", 550, 400);
+                graficos.drawString("1. Lanza el dado y mueve una ficha. ", 550, 350);
+                graficos.drawString("2. Si obtienes un 6, puedes mover otra ficha", 550, 400);
+                graficos.drawString("3. Si no puedes mover, pasa el turno", 550, 450);
         
     }
 }
